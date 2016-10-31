@@ -27,3 +27,9 @@
 *.exe
 *.out
 *.app
+LeetCodeTest
+
+#CMakeFiles
+CMakeCache.txt
+*.cmake
+CMake/CMakeFiles/*
