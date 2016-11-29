@@ -1,6 +1,6 @@
 #include "../src/ReverseInteger.hpp"
 
-#include "external/single_include/catch.hpp"b
+#include "external/single_include/catch.hpp"
 
 
 TEST_CASE("ReverseInteger", "[reverseInteger]") {

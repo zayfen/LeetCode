@@ -161,6 +161,33 @@ home/ken/workspace/LeetCode/test/AtoITest.cpp.s:
 	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/AtoITest.cpp.s
 .PHONY : home/ken/workspace/LeetCode/test/AtoITest.cpp.s
 
+home/ken/workspace/LeetCode/test/ContainerMostWaterTest.o: home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.o
+
+.PHONY : home/ken/workspace/LeetCode/test/ContainerMostWaterTest.o
+
+# target to build an object file
+home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.o:
+	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.o
+.PHONY : home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.o
+
+home/ken/workspace/LeetCode/test/ContainerMostWaterTest.i: home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.i
+
+.PHONY : home/ken/workspace/LeetCode/test/ContainerMostWaterTest.i
+
+# target to preprocess a source file
+home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.i:
+	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.i
+.PHONY : home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.i
+
+home/ken/workspace/LeetCode/test/ContainerMostWaterTest.s: home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.s
+
+.PHONY : home/ken/workspace/LeetCode/test/ContainerMostWaterTest.s
+
+# target to generate assembly for a file
+home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.s:
+	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.s
+.PHONY : home/ken/workspace/LeetCode/test/ContainerMostWaterTest.cpp.s
+
 home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.o: home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.cpp.o
 
 .PHONY : home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.o
@@ -187,6 +214,60 @@ home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.s: home/ken/work
 home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.cpp.s:
 	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.cpp.s
 .PHONY : home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.cpp.s
+
+home/ken/workspace/LeetCode/test/PalindromeIntegerTest.o: home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.o
+
+.PHONY : home/ken/workspace/LeetCode/test/PalindromeIntegerTest.o
+
+# target to build an object file
+home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.o:
+	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.o
+.PHONY : home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.o
+
+home/ken/workspace/LeetCode/test/PalindromeIntegerTest.i: home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.i
+
+.PHONY : home/ken/workspace/LeetCode/test/PalindromeIntegerTest.i
+
+# target to preprocess a source file
+home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.i:
+	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.i
+.PHONY : home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.i
+
+home/ken/workspace/LeetCode/test/PalindromeIntegerTest.s: home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.s
+
+.PHONY : home/ken/workspace/LeetCode/test/PalindromeIntegerTest.s
+
+# target to generate assembly for a file
+home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.s:
+	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.s
+.PHONY : home/ken/workspace/LeetCode/test/PalindromeIntegerTest.cpp.s
+
+home/ken/workspace/LeetCode/test/RegularMatchingTest.o: home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.o
+
+.PHONY : home/ken/workspace/LeetCode/test/RegularMatchingTest.o
+
+# target to build an object file
+home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.o:
+	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.o
+.PHONY : home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.o
+
+home/ken/workspace/LeetCode/test/RegularMatchingTest.i: home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.i
+
+.PHONY : home/ken/workspace/LeetCode/test/RegularMatchingTest.i
+
+# target to preprocess a source file
+home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.i:
+	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.i
+.PHONY : home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.i
+
+home/ken/workspace/LeetCode/test/RegularMatchingTest.s: home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.s
+
+.PHONY : home/ken/workspace/LeetCode/test/RegularMatchingTest.s
+
+# target to generate assembly for a file
+home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.s:
+	$(MAKE) -f CMakeFiles/LeetCodeTest.dir/build.make CMakeFiles/LeetCodeTest.dir/home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.s
+.PHONY : home/ken/workspace/LeetCode/test/RegularMatchingTest.cpp.s
 
 home/ken/workspace/LeetCode/test/ReverseIntegerTest.o: home/ken/workspace/LeetCode/test/ReverseIntegerTest.cpp.o
 
@@ -255,9 +336,18 @@ help:
 	@echo "... home/ken/workspace/LeetCode/test/AtoITest.o"
 	@echo "... home/ken/workspace/LeetCode/test/AtoITest.i"
 	@echo "... home/ken/workspace/LeetCode/test/AtoITest.s"
+	@echo "... home/ken/workspace/LeetCode/test/ContainerMostWaterTest.o"
+	@echo "... home/ken/workspace/LeetCode/test/ContainerMostWaterTest.i"
+	@echo "... home/ken/workspace/LeetCode/test/ContainerMostWaterTest.s"
 	@echo "... home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.o"
 	@echo "... home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.i"
 	@echo "... home/ken/workspace/LeetCode/test/LongestPalindromeSubStringTest.s"
+	@echo "... home/ken/workspace/LeetCode/test/PalindromeIntegerTest.o"
+	@echo "... home/ken/workspace/LeetCode/test/PalindromeIntegerTest.i"
+	@echo "... home/ken/workspace/LeetCode/test/PalindromeIntegerTest.s"
+	@echo "... home/ken/workspace/LeetCode/test/RegularMatchingTest.o"
+	@echo "... home/ken/workspace/LeetCode/test/RegularMatchingTest.i"
+	@echo "... home/ken/workspace/LeetCode/test/RegularMatchingTest.s"
 	@echo "... home/ken/workspace/LeetCode/test/ReverseIntegerTest.o"
 	@echo "... home/ken/workspace/LeetCode/test/ReverseIntegerTest.i"
 	@echo "... home/ken/workspace/LeetCode/test/ReverseIntegerTest.s"

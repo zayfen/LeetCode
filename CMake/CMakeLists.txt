@@ -16,6 +16,9 @@ set(SOURCES
   ${LEETCODE_PRO_DIR}/test/LongestPalindromeSubStringTest.cpp
   ${LEETCODE_PRO_DIR}/test/ReverseIntegerTest.cpp
   ${LEETCODE_PRO_DIR}/test/AtoITest.cpp
+  ${LEETCODE_PRO_DIR}/test/PalindromeIntegerTest.cpp
+  ${LEETCODE_PRO_DIR}/test/RegularMatchingTest.cpp
+  ${LEETCODE_PRO_DIR}/test/ContainerMostWaterTest.cpp
   )
 
 include_directories(${LEETCODE_PRO_DIR}/test/external/single_include  ${LEETCODE_PRO_DIR}/src)
