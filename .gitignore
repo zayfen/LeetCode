@@ -33,3 +33,7 @@ LeetCodeTest
 CMakeCache.txt
 *.cmake
 CMake/CMakeFiles/*
+
+
+# Rust
+target/
