@@ -1,34 +1,22 @@
 //
 pub fn max_sub_array (nums: Vec<i32>) -> i32 {
-  // f(n) = max(f(n-1), f(n-1) + nums[n])
-
-  // init
-  let mut memo = Vec::new();
-  memo.push(*nums.get(0).unwrap());
-
-  let mut recorder: Vec<i32> = Vec::new();
-  recorder.push(*nums.get(0).unwrap());
-
-  let mut result: Vec<i32> = Vec::new();
-
+  // if curr_num + prev_num > curr_num ,then make nums[curr] = curr_nums + prev_nums else nums[curr] = nums[curr]
   let len_nums = nums.len();
-  for num in 1..len_nums {
-    let prev_num = *memo.get(num-1).unwrap();
-    let current_num = *nums.get(num).unwrap();
-    memo.push(prev_num.max(prev_num + current_num));
+  let mut result: Vec<i32> = Vec::new();
+  result.push(*nums.get(0).unwrap());
 
-    if prev_num + current_num >= prev_num { // select current number, save sum
-      recorder.push(current_num);
+  for i in 1..len_nums {
+    let curr_num = *nums.get(i).unwrap();
+    let prev_num = result.get(result.len() - 1).unwrap();
+
+    if curr_num + prev_num >= curr_num {
+      result.push(curr_num + prev_num);
     } else {
-      // save sum of this sub_array
-      println!("{:?}", recorder);
-      result.push(recorder.iter().sum());
-      recorder.clear();
+      result.push(curr_num);
     }
   }
-
+  println!("{:?}", nums);
   println!("{:?}", result);
-
   *result.iter().max().unwrap()
 }
 
