@@ -77,21 +77,21 @@ mod dp_tests {
   fn test_unique_paths () {
     assert_eq!(unique_paths(3, 2), 3);
     assert_eq!(unique_paths(7, 3), 28);
-    assert_eq!(unique_paths(1, 1), 0);
+    assert_eq!(unique_paths(1, 1), 1);
   }
 
   #[test]
   fn test_unique_paths_v2 () {
     assert_eq!(unique_paths(3, 2), 3);
     assert_eq!(unique_paths(7, 3), 28);
-    assert_eq!(unique_paths(1, 1), 0);
+    assert_eq!(unique_paths(1, 1), 1);
   }
 
     #[test]
   fn test_unique_paths_v3 () {
     assert_eq!(unique_paths(3, 2), 3);
     assert_eq!(unique_paths(7, 3), 28);
-    assert_eq!(unique_paths(1, 1), 0);
+    assert_eq!(unique_paths(1, 1), 1);
   }
 }
 
