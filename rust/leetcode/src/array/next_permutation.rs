@@ -14,9 +14,54 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
  **/
 
 
+impl Solution {
+  pub fn next_permutation(nums: &mut Vec<i32>) {
+    let nums_len = nums.len();
 
-pub fn next_permutation (nums: &mut Vec<i32>) {
-  let mut k = 0;
-  let nums_len = nums.len();
-  // first find k so that
+    let (mut left, mut right) = (0, 0);
+
+    let mut i = nums_len - 1;
+    while i >= 1 {
+      if nums[i-1] < nums[i] {
+        left = i-1;
+        right = i;
+        break;
+      }
+      i-=1;
+    }
+
+
+    if left ==  0 && right == 0 {
+      nums.reverse();
+    } else {
+      // find min({k | nums[k] > nums[left], 且k >= right })
+      let mut k = right;
+      let left_num = nums[left];
+      for i in right..nums_len {
+        if nums[i] > left_num && nums[i] <= nums[k] {
+          k = i
+        }
+      }
+
+      nums[left] = nums[k];
+      nums[k] = left_num;
+
+      // reverse nums[k+1..]
+      let mut step = 1;
+      for i in right..nums_len {
+        let (l, r) = (i, nums_len - step);
+        if l >= r {
+          return;
+        }
+
+        let tmp = nums[l];
+        nums[l] = nums[r];
+        nums[r] = tmp;
+        step += 1;
+      }
+
+    }
+  }
+
+
 }
