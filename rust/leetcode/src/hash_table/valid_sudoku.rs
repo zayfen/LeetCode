@@ -77,6 +77,33 @@ impl Solution {
     return true;
   }
 
+  pub fn is_valid_sudoku_v2 (board: Vec<Vec<char>>) -> bool {
+    let mut hash_map = std::collections::HashMap::new();
+
+    for row in 0..9 {
+      for col in 0..9 {
+        let ch = board[row][col];
+        if ch != '.' {
+          let x: usize = (row as f32 / 3f32).floor() as usize;
+          let y: usize = (col as f32 / 3f32).floor() as usize;
+          let (cell_index_x, cell_index_y) = (x * 3, y * 3);
+
+          let row_key = format!("{}r{}", ch, row);
+          let col_key = format!("{}c{}", ch, col);
+          let block_key = format!("{}b{:?}", ch, (cell_index_x, cell_index_y));
+          if hash_map.insert(row_key, "") == None &&
+            hash_map.insert(col_key, "") == None &&
+            hash_map.insert(block_key, "") == None {
+              continue;
+            }
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
 }
 
 #[cfg(test)]
@@ -97,6 +124,6 @@ mod hash_table {
       vec!('.','.','.','.','8','.','.','7','9')
     );
 
-    assert_eq!(Solution::is_valid_sudoku(board), true);
+    assert_eq!(Solution::is_valid_sudoku_v2(board), true);
   }
 }
