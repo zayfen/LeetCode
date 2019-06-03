@@ -38,9 +38,7 @@ impl Solution {
     while longest_recorder.len() > 0 {
       if stack_top == None {
         counter = longest_recorder.len() as i32;
-        if counter > longest {
-          longest = counter;
-        }
+        longest = if counter > longest { counter } else { longest };
         break;
       }
 
@@ -48,24 +46,15 @@ impl Solution {
 
       if stack_top.unwrap().0 < recorder.0 {
         counter += 1;
-        if counter > longest {
-          longest = counter;
-        }
+
+        longest = if counter > longest { counter } else { longest };
         continue;
       }
-
-      // if counter > longest {
-      //   longest = counter;
-      // }
 
       longest_recorder.push(recorder);
       counter = 0;
       stack_top = stack.pop();
     }
-
-    // if counter > longest {
-    //   longest = counter;
-    // }
 
     longest * 2
   }
@@ -73,7 +62,7 @@ impl Solution {
 
 
 #[cfg(test)]
-mod dp_tests {
+mod string_tests {
   use super::*;
 
   #[test]
