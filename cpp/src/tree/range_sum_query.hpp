@@ -6,7 +6,7 @@
 
 class NumArray {
 public:
-  NumArray (std::vector<int>& nums) {
+  NumArray (std::vector<int>& nums): size(nums.size()) {
     this->segmentTree.resize(100000);
     this->buildSegmentTree(nums);
   }
@@ -16,7 +16,30 @@ public:
   }
 
   int sumRange (int i, int j) {
-    return 0;
+    // 等比数列 q = 2, a0 = 1, Sn = 2*an - 1, beause an = nums.length, so Sn = 2 * nums.length - 1
+    
+    i = i + this->size - 1; // 指向树的最后一层
+    j = j + this->size - 1; // 指向树的最后一层
+    int sum = 0;
+
+    while (i < j) {
+      // 如果 i 或者 j是奇数，则 sum += segmentTree[i | j]
+      if ((i & 0x1) == 0) { // i是偶数
+        sum += this->segmentTree[i];
+        i++;
+      }
+
+      if ((j & 0x1) != 0) { // j是奇数
+        sum += this->segmentTree[j];
+        j--;
+      }
+
+      i <<= 2;
+      j <<= 2;      
+    }
+
+    // if low < mid < high, 
+    return sum;
   }
 
   void printSegmentTree () {
@@ -31,7 +54,7 @@ private:
 
   void buildSegmentTree (std::vector<int>& nums) {
     int left = 0;
-    int right = nums.size() - 1;
+    int right = this->size - 1;
 
     int currentNodeIndex = 0;
     this->buildSegmentTreeHelper(left, right, nums, currentNodeIndex);
@@ -78,4 +101,5 @@ private:
 
 private:
   std::vector<int> segmentTree;
+  const int size = 0;
 };
