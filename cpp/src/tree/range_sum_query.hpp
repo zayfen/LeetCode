@@ -7,7 +7,7 @@
 class NumArray {
 public:
   NumArray (std::vector<int>& nums): size(nums.size()) {
-    this->segmentTree.resize(100000);
+    this->segmentTree.resize(2 * size - 1); // 等比求和公式
     this->buildSegmentTree(nums);
   }
 
@@ -23,19 +23,23 @@ public:
     int sum = 0;
 
     while (i < j) {
+
       // 如果 i 或者 j是奇数，则 sum += segmentTree[i | j]
       if ((i & 0x1) == 0) { // i是偶数
         sum += this->segmentTree[i];
+        std:: cout << "i: " << i << " ;sum: " << sum << std::endl;
         i++;
+        
       }
 
       if ((j & 0x1) != 0) { // j是奇数
         sum += this->segmentTree[j];
+        std:: cout << "j: " << j << " ;sum: " << sum << std::endl;
         j--;
       }
-
-      i <<= 2;
-      j <<= 2;      
+      i = (i - 1) / 2;
+      j = (j - 2) / 2;
+      std::cout << std::endl;
     }
 
     // if low < mid < high, 
@@ -43,9 +47,8 @@ public:
   }
 
   void printSegmentTree () {
-    int limit = 20;
-    for (int i = 0; i < limit; i++) {
-      std::cout << this->segmentTree[i] << " ";
+    for (auto i : segmentTree) {
+      std::cout << i << " ";
     }
     std::cout << std::endl;
   }
