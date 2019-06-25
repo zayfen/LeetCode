@@ -9,9 +9,21 @@ public:
   NumArray (std::vector<int>& nums): size(nums.size()) {
     this->segmentTree.resize(2 * size - 1); // 等比求和公式
     this->buildSegmentTree(nums);
-  }
+   }
 
   void update (int i, int val) {
+    int diff = 0;
+    i = i + this->size - 1;
+    diff = val - this->segmentTree[i];
+    
+    while (i >= 0) {
+      this->segmentTree[i] += diff;
+      if ((i & 0x1) == 0) { // 偶数
+        i = (i - 2) / 2;
+      } else { // 奇数
+        i = (i - 1) / 2;
+      }
+    }
     return ;
   }
 
