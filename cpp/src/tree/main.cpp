@@ -15,4 +15,11 @@ int main() {
   assert(arr.sumRange(1, 6) == 28);
 
 
+  // nums: [1， 3， 5]， sumRange: 0-2
+  std::vector<int> nums2 = {1, 3, 5};
+  NumArray arr2(nums2);
+  arr2.printSegmentTree();
+
+  assert(arr2.sumRange(0, 2) == 9);
+
 }
