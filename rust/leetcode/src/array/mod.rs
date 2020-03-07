@@ -7,4 +7,6 @@ pub mod find_first_last_position_in_sorted_array;
 
 pub mod rotate_image;
 
+pub mod p35_search_insert;
+
 
