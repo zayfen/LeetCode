@@ -5,56 +5,31 @@ struct Solution ();
 impl Solution {
   pub fn trap (height: Vec<i32>) -> i32 {
     let mut result = 0;
-    // find  v
     let len = height.len();
     if len == 0 {
       return result;
     }
     
-    let mut ptr: usize = 0;
-    let mut left: usize = 0;
-    let mut right: usize = 0;
-
-    while ptr < len-1 {
-      let curr_height: i32 = height[ptr];
-      let next_height: i32 = height[ptr+1];
-
-      // if next_height < curr_height, then push stack
-      if next_height < curr_height {
-        left = ptr;
-
-        // skip all downstairs
-        ptr += 1;
-        while ptr < len-1 && height[ptr] > height[ptr+1] {
-          ptr += 1;
+    let (mut left, mut right) = (0usize, len - 1);
+    let (mut left_max_height, mut right_max_height) = (0i32, 0i32);
+    
+    while left < right {
+      if height[left] < height[right] {
+        if height[left] > left_max_height {
+          left_max_height = height[left];
+        } else {
+          result += left_max_height - height[left];
         }
-        // now ptr is on floor, scan all upstairs
-        while ptr < len-1 && height[ptr] <= height[ptr+1] {
-          ptr += 1;
-        }
-
-        // now ptr is on ceil
-        right = ptr;
-
-        // now calculate water in range [left, right]
-        println!("left: {:?}, right: {:?}", left, right);
-        let shortest_side = std::cmp::min(height[left], height[right]) as usize;
-        let mut sum = std::cmp::max((right - left - 1) * shortest_side, 0);
         left += 1;
-        while left < right {
-          sum -= std::cmp::min(height[left] as usize, shortest_side);
-          left += 1; // move forward
+
+      } else {
+        if height[right] > right_max_height {
+          right_max_height = height[right];
+        } else {
+          result += right_max_height - height[right];
         }
-        println!("sum: {:?}", sum);
-        result += sum as i32;
-
-        // reset context
-        left = 0;
-        right = 0;
-        continue;
+        right -= 1;
       }
-
-      ptr += 1;
     }
 
     result
