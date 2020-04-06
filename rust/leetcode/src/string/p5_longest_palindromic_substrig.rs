@@ -22,7 +22,7 @@ impl Solution {
     let mut mem: Vec<usize> = mem.iter().map(|_| 1usize).collect();
     let (mut l, mut r) = (0usize, 0usize);
     
-    for (index, val) in s.chars().enumerate() {
+    for (index, _) in s.chars().enumerate() {
       let mut k = if index == 0 || index > r {
         1
       } else {
