@@ -45,20 +45,20 @@ impl Solution {
   }
 
   
-
+  // 基于stack的解法，先记录每一对括号的位置，然后通过编列这些记录着多最长的合法括号
   pub fn longest_valid_parentheses_v2 (s: String) -> i32 {
     #[derive(Clone, Copy, Debug)]
-    struct LBraceRecord (usize, usize, bool);
+    struct ParenthesesRecord (usize, usize, bool); // (leftParenthesePosition, rightParenthesePosition, visited)
 
     let mut max: usize = 0;
     let mut stack: Vec<usize> = vec![];
-    let mut records: Vec<LBraceRecord> = vec![LBraceRecord(0,0, false); s.chars().count()];
+    let mut records: Vec<ParenthesesRecord> = vec![ParenthesesRecord(0,0, false); s.chars().count()];
 
     for (i, c) in s.chars().enumerate() {
       if c == ')' {
         if !stack.is_empty() {
-          let lbrace_index = stack.pop().unwrap();
-          records[lbrace_index] = LBraceRecord(lbrace_index, i, false);
+          let lparenthese_index = stack.pop().unwrap();
+          records[lparenthese_index] = ParenthesesRecord(lparenthese_index, i, false);
         }
       } else {
         stack.push(i);
@@ -69,7 +69,7 @@ impl Solution {
     let ref_records = &mut records;
     dbg!(&ref_records);
 
-    fn travel (record: &mut LBraceRecord, records: &Vec<LBraceRecord>) -> usize {
+    fn travel (record: &mut ParenthesesRecord, records: &Vec<ParenthesesRecord>) -> usize {
       record.2 = true;
       if record.0 >= record.1 {
         return 0;
