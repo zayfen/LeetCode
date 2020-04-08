@@ -73,10 +73,111 @@
  */
 
 // @lc code=start
-impl Solution {
-  pub fn is_match(s: String, p: String) -> bool {
+struct Solution();
+
+fn dfs (dp: &mut Vec<usize>, pindex: usize, s: &String, p: &String) -> bool {
+  if p.len() == 0 {
+    return s.len() == 0;
+  }
+
+  if pindex >= p.len() {
+    return dp[p.len()-1] == s.len();
+  }
+  
+  let mut matched = false;
+  let current_pattern_char = p.chars().nth(pindex).unwrap();
+  match current_pattern_char {
+    '*' => { // 因为 ‘×’ 可以匹配空字符串
+      if s.is_empty() {
+        return p.len() == 1;
+      }
+
+      let mut start_index = 0;
+      if pindex > 0 {
+        start_index = dp[pindex - 1];
+      }
+      let end = s.len() + 1;
       
+      for i in start_index..end {
+        if matched { // 如果已经匹配上了，就break;
+          break;
+        }
+        // p[pindex+1] == s[dp[pindex]]
+        dp[pindex] = i;
+        if pindex + 1 < (p.len() - 1) && i < s.len() {
+          let next_pattern_char = p.chars().nth(pindex+1).unwrap();
+          // find next_pattern_char 对应在s中的位置
+          if s.chars().nth(i).unwrap() != next_pattern_char && next_pattern_char != '?' {
+            continue;
+          }
+        }
+
+        matched = dfs(dp, pindex + 1, s, p);
+      }
+    },
+    c => {
+      let mut source_index = 0;
+      if pindex > 0 {
+        source_index = dp[pindex - 1];
+      }
+      if source_index >= s.len() { // dp[index-1]已经匹配了所有的字符串
+        return false;
+      }
+      if c == s.chars().nth(source_index).unwrap() || c == '?' {         // ? 匹配任何字符串
+        dp[pindex] = source_index + 1;
+        return dfs(dp, pindex + 1, s, p);
+      } else {
+        return false;
+      }
+    }
+  }
+  
+  matched
+}
+
+fn simplify_pattern (p: String) -> String {
+  let mut result: String = "".to_owned();
+  let mut p = p;
+  while p != result {
+    result = p.clone();
+    p = p.replace("**", "*");
+  }
+  result
+}
+
+impl Solution {
+
+
+  pub fn is_match(s: String, p: String) -> bool {
+    // p 替换连续的*成一个
+    let p = simplify_pattern(p);
+    let mut dp: Vec<usize> = vec![0; p.len()];
+    return dfs(&mut dp, 0, &s, &p);
   }
 }
 // @lc code=end
 
+
+#[cfg(test)]
+mod dp_tests {
+  use super::*;
+
+  #[test]
+  fn test_is_match () {
+
+    assert_eq!(true, Solution::is_match("".to_owned(), "".to_owned()));
+    assert_eq!(true, Solution::is_match("".to_owned(), "*".to_owned()));
+    assert_eq!(false, Solution::is_match("".to_owned(), "?".to_owned()));
+    assert_eq!(false, Solution::is_match("".to_owned(), "*a".to_owned()));
+    assert_eq!(false, Solution::is_match("".to_owned(), "?a".to_owned()));
+    assert_eq!(false, Solution::is_match("a".to_owned(), "?a".to_owned()));
+    assert_eq!(true, Solution::is_match("a".to_owned(), "*a".to_owned()));
+    assert_eq!(false, Solution::is_match("aa".to_owned(), "a".to_owned()));
+    assert_eq!(true, Solution::is_match("aa".to_owned(), "a*".to_owned()));
+    assert_eq!(true, Solution::is_match("aa".to_owned(), "aa".to_owned()));
+    assert_eq!(true, Solution::is_match("adceb".to_owned(), "*a*b".to_owned()));
+    assert_eq!(false, Solution::is_match("acdcb".to_owned(), "a*c?b".to_owned()));
+    assert_eq!(false, Solution::is_match("aaabbbaabaaaaababaabaaabbabbbbbbbbaabababbabbbaaaaba".to_owned(), "a*******b".to_owned()));
+    assert_eq!(false, Solution::is_match("babbbbaabababaabbababaababaabbaabababbaaababbababaaaaaabbabaaaabababbabbababbbaaaababbbabbbbbbbbbbaabbb".to_owned(), "b**bb**a**bba*b**a*bbb**aba***babbb*aa****aabb*bbb***a".to_owned()));
+  }
+}
