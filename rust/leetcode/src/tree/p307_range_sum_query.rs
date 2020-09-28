@@ -25,8 +25,10 @@ impl NumArray {
     tree_arr.resize(len, 0);
     let mut tree_arr = [tree_arr, nums].concat();
 
-    for i in (len-1..0).rev() {
+    // (1..5).rev() => 4 3 2 1
+    for i in (1..len).rev() {
       // now i from len-1 to 0 => [len-1, 0)
+      dbg!(i);
       tree_arr[i] = tree_arr[left_child(i)] + tree_arr[right_child(i)];
     }
     
@@ -70,6 +72,9 @@ impl NumArray {
         right -= 1;
         res += self.tree[right];
       }
+
+      left >>= 1;
+      right >>= 1;
     }
 
     res
@@ -82,14 +87,20 @@ mod range_sum_query_tests {
   use super::*;
 
   #[test]
-  fn test () {
+  fn test_num_array () {
     let arr = NumArray::new(vec![1, 2, 3, 4, 5]);
+
+    let ref_arr = &arr;
+    dbg!(ref_arr);
+
     let sum = arr.sum_range(0, 4);
-    assert_eq!(15, sum);
+    dbg!(sum);
+
+    assert_eq!(10, sum);
 
     let mut arr = arr;
     arr.update(0, 2);
     let sum = arr.sum_range(0, 4);
-    assert_eq!(16, sum);
+    assert_eq!(11, sum);
   }
 }
