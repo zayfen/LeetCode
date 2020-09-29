@@ -17,12 +17,9 @@ pub(crate) fn parent (i: usize) -> usize {
 
 
 impl NumArray {
-  
   fn new (nums: Vec<i32>) -> Self {
-
-    let mut tree_arr = vec![];
     let len = nums.len();
-    tree_arr.resize(len, 0);
+    let mut tree_arr = vec![0; len];
     let mut tree_arr = [tree_arr, nums].concat();
 
     // (1..5).rev() => 4 3 2 1
